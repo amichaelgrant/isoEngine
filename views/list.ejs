@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <table>
+    	<tr>
+    		<td>Institution</td>
+    		<td>Address</td>
+    		<td>Header Info</td>
+    		<td>Fields Used</td>
+    	</tr>
+
+    <%if(institutions){%>
+    	<%for( item in institutions){%>
+    		<tr>
+    			<td>institutions[item].title</td>
+    			<td>institutions[item].address</td>
+    			<td>institutions[item].header</td>
+    			<td>institutions[item].fields.length</td>
+    			<td> <a href="/config.edit/">Edit</a> <a href="/config.delete">Delete</a></td>
+    		</tr>
+    	<%}%>
+    <%}%>
+  </body>
+</html>

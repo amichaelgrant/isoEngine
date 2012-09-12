@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <div>
+    	<fieldset>
+    		<legend>Create</legend>
+
+    		<fieldset>
+	    		<legend>Basic</legend>
+	    		<form>
+	    			<label>Title</label>
+	    			<input type="text" name="title" />
+
+	    			<label>Address</label>
+	    			<input type="text" name="address" />
+
+	    			<label>Email</label>
+	    			<input type="text" name="email" />
+
+	    			<label>Telephone</label>
+	    			<input type="text" name="telephone" />
+	    		</form>
+	    	</fieldset>
+
+    		<fieldset>
+	    		<legend>Fields</legend>
+	    		<form>
+	    			<%for var f = 1; f <= 128; f++){%>
+	    				<label>Title</label>
+	    				<input type="checkbox" name="field:<%=f%>" />
+	    			<%}%>
+	    		</form>
+	    	</fieldset>
+    	</fieldset>
+    </div>
+  </body>
+</html>
