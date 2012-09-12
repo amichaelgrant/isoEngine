@@ -4,41 +4,69 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
+
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+
+    <p class="uix-config-menu">
+        <a href="/config">Config</a>
+        <a href="/config.create">Create</a> 
+        <a href="/config.list">List</a>
+    </p>
 
     <div>
-    	<fieldset>
-    		<legend>Create</legend>
+    	<form action="/config.save" method="post">
+    		<input type="hidden" name="id" value="<%if(institution){%><%=institution._id%><%}%>">
+	    	<fieldset>
+	    		<legend>Create Institution</legend>
 
-    		<fieldset>
-	    		<legend>Basic</legend>
-	    		<form>
-	    			<label>Title</label>
-	    			<input type="text" name="title" />
+	    		<fieldset class="uix-fieldset-basic">
+		    		<legend>Basic</legend>
 
-	    			<label>Address</label>
-	    			<input type="text" name="address" />
+		    			<div class="uix-group">
+			    			<label class="uix-label">Name</label>
+			    			<input type="text" name="name" value="<%if(institution){%><%=institution.name%><%}%>" />
+			    		</div>
 
-	    			<label>Email</label>
-	    			<input type="text" name="email" />
+			    		<div class="uix-group">
+			    			<label class="uix-label">Address</label>
+			    			<input type="text" name="address" value="<%if(institution){%><%=institution.address%><%}%>"/>
+		    			</div>
 
-	    			<label>Telephone</label>
-	    			<input type="text" name="telephone" />
-	    		</form>
+		    			<div class="uix-group">
+			    			<label class="uix-label">Email</label>
+			    			<input type="text" name="email" value="<%if(institution){%><%=institution.email%><%}%>"/>
+		    			</div>
+
+		    			<div class="uix-group">
+			    			<label class="uix-label">Telephone</label>
+			    			<input type="text" name="telephone"  value="<%if(institution){%><%=institution.telephone%><%}%>"/>
+		    			</div>
+
+
+		    	</fieldset>
+
+		    	<fieldset class="uix-fieldset-basic">
+		    		<legend>Network</legend>
+		    		<div class="uix-group">
+		    			<label class="uix-label">Header</label>
+		    			<input type="text" name="header"  value="<%if(institution){%><%=institution.header%><%}%>"/>
+	    			</div>
+		    		<div class="uix-group">
+		    			<label class="uix-label">Host</label>
+		    			<input type="text" name="host"  value="<%if(institution){%><%=institution.host%><%}%>"/>
+	    			</div>
+		    		<div class="uix-group">
+		    			<label class="uix-label">Port</label>
+		    			<input type="text" name="port"  value="<%if(institution){%><%=institution.port%><%}%>"/>
+	    			</div>
+		    	</fieldset>
+	    		
+	    		
+		    	<fieldset> <input type="submit" value="Save" /> </fieldset>
 	    	</fieldset>
-
-    		<fieldset>
-	    		<legend>Fields</legend>
-	    		<form>
-	    			<%for var f = 1; f <= 128; f++){%>
-	    				<label>Title</label>
-	    				<input type="checkbox" name="field:<%=f%>" />
-	    			<%}%>
-	    		</form>
-	    	</fieldset>
-    	</fieldset>
+	    </form>
     </div>
   </body>
+
 </html>

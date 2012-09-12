@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -10,7 +9,7 @@ var express = require('express')
 
 var app = express();
 
-require('./misc/mongo.conn.js');
+require('./models/model.js').model(app);
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);

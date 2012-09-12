@@ -6,3 +6,28 @@ body {
 a {
   color: #00B7FF;
 }
+
+.uix-group{
+	display: block;
+	min-height: 20px;
+}
+
+.uix-group input[type="text"]{
+	width: 270px;
+}
+
+.uix-label{
+	display: inline-block;
+	width  : 100px;
+}
+
+.uix-fieldset{
+	display: inline-block;
+	width  : 20%;
+	vertical-align: top;
+}
+
+.uix-fieldset-basic{
+	display: block;
+	vertical-align: top;
+}

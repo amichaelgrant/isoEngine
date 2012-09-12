@@ -4,28 +4,49 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
+
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    
+    <p class="uix-config-menu">
+        <a href="/config">Config</a>
+        <a href="/config.create">Create</a> 
+        <a href="/config.list">List</a>
+    </p>
+    
+    <fieldset>
+        <legend>List Institutions</legend>
+        <table>
+        	<tr>
+        		<td>Institution</td>
+        		<td>Address</td>
+        		<td>Header Info</td>
+                <td>Host</td>
+                <td>Port</td>
+        	</tr>
 
-    <table>
-    	<tr>
-    		<td>Institution</td>
-    		<td>Address</td>
-    		<td>Header Info</td>
-    		<td>Fields Used</td>
-    	</tr>
+            <%if(institutions){%>
+            	<%for( var item in institutions){%>
+            		<tr>
+            			<td>
+                            <a href="/config.service/<%=institutions[item]._id%>">
+                                <%=institutions[item].name%>
+                            </a>
+                        </td>
+            			<td><%=institutions[item].address%></td>
+            			<td><%=institutions[item].header%></td>
+                        <td><%=institutions[item].host%></td>
+                        <td><%=institutions[item].port%></td>
+            			<td> 
+                            <a href="/config.create/<%=institutions[item]._id%>">Edit</a>
+                            <a href="/config.delete/<%=institutions[item]._id%>">Delete</a>
+                        </td>
+            		</tr>
+            	<%}%>
+            <%}%>
+        </table>
+    </fieldset>
 
-    <%if(institutions){%>
-    	<%for( item in institutions){%>
-    		<tr>
-    			<td>institutions[item].title</td>
-    			<td>institutions[item].address</td>
-    			<td>institutions[item].header</td>
-    			<td>institutions[item].fields.length</td>
-    			<td> <a href="/config.edit/">Edit</a> <a href="/config.delete">Delete</a></td>
-    		</tr>
-    	<%}%>
-    <%}%>
   </body>
+
 </html>

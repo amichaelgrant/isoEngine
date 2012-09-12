@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+
+  <body>
+    <h1><%= title %></h1>
+
+    <p class="uix-config-menu">
+        <a href="/config">Config</a>
+        <a href="/config.create">Create</a> 
+        <a href="/config.list">List</a>
+    </p>
+
+    <fieldset>
+      <legend>Add Services for :: <%if(institution){%><%=institution.name%><%}%></legend>
+
+      <form action="/config.service.save" method="post">
+        <input name="id" type="hidden" value="<%if(institution){%><%=institution._id%><%}%>"/>
+        <div class="uix-group">
+          <label class="uix-label">Service Name</label>
+          <input type="text" name="name" value="<%if(service){%><%=service.name%><%}%>" />
+        </div>
+
+        <div>            
+          <fieldset class="uix-fieldset">
+            <legend>Fields [1 - 32]</legend>
+            <%for(var f=1; f<=32; f++){%>
+              <div class="uix-group">
+                <label>Field <%=f%></label>
+                <input type="checkbox" name="field:<%=f%>" />
+              </div>
+            <%}%>
+          </fieldset>
+
+          <fieldset class="uix-fieldset">
+            <legend>Fields [33 - 64]</legend>
+            <%for(var f=33; f<=64; f++){%>
+              <div class="uix-group">
+                <label>Field <%=f%></label>
+                <input type="checkbox" name="field:<%=f%>" />
+              </div>
+            <%}%>
+          </fieldset>
+
+          <fieldset class="uix-fieldset">
+            <legend>Fields [65 - 96]</legend>
+            <%for(var f=65; f<=96; f++){%>
+              <div class="uix-group">
+                <label>Field <%=f%></label>
+                <input type="checkbox" name="field:<%=f%>" />
+              </div>
+            <%}%>
+          </fieldset>
+
+          <fieldset class="uix-fieldset">
+            <legend>Fields [97 - 128]</legend>
+            <%for(var f=97; f<=128; f++){%>
+              <div class="uix-group">
+                <label>Field <%=f%></label>
+                <input type="checkbox" name="field:<%=f%>" />
+              </div>
+            <%}%>
+          </fieldset>
+        </div>
+
+        <div class="uix-group">
+          <input type="submit" name="name" value="Save" />
+        </div>
+
+      </form>
+    </fieldset>
+
+
+    <fieldset>
+      <legend>Services for :: <%if(institution){%><%=institution.name%><%}%></legend>
+      <table>
+          <tr>
+            <th>Service</th>
+            <th>Fields</th>
+          </tr>
+
+            <%if(services){%>
+              <%for( var item in services){%>
+                <tr>
+                  <td><%=services[item].name%></td>
+                  <td><%=services[item].fields%></td>
+                        
+                  <td> 
+                      <a href="/config.service/<%=services[item]._id%>">Edit</a>
+                      <a href="/config.service.delete/<%=services[item]._id%>">Delete</a>
+                  </td>
+                </tr>
+              <%}%>
+            <%}%>
+
+      </table>
+
+    </fieldset>
+
+  </body>
+
+</html>
